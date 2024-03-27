@@ -10,12 +10,12 @@ import lombok.NoArgsConstructor;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-@Table(name = "grade")
+@Table(name = "grades")
 public class GradeEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long gradeId;
     private String gradeName;
-    private String levelName;
+ 
 
 }

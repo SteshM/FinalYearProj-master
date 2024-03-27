@@ -13,11 +13,13 @@ import java.util.stream.Collectors;
 public class TokenGenerator {
     Algorithm algo = Algorithm.HMAC256("Stella".getBytes());
 
- public String token(User user){
-    return JWT.create()
-            .withSubject(user.getUsername())
-            .withIssuedAt(Instant.now().plus(60,ChronoUnit.MINUTES))
-            .withClaim("roles", user.getAuthorities().stream().map(GrantedAuthority::getAuthority).collect(Collectors.toList()))
-            .sign(algo);
- }
+    public String token(User user){
+        return JWT.create()
+                .withSubject(user.getUsername())
+                .withExpiresAt(Instant.now().plus(60,ChronoUnit.MINUTES))
+                .withClaim("roles", user.getAuthorities().stream().map(GrantedAuthority::getAuthority).collect(Collectors.toList()))
+                .sign(algo);
+    }
 }
+
+

@@ -31,17 +31,17 @@ public class CustomAuthorization extends OncePerRequestFilter {
     }
 
 
-    private void returnFailString(HttpServletResponse response){
+    private void returnFailString(HttpServletResponse response, String message){
         response.setContentType("application/json");
         JsonMapper jsonMapper = new JsonMapper();
         Map<String, String> map = new HashMap<>();
-        map.put("response", "failed authorization");
+        map.put("response", message);
         try {
             jsonMapper.writeValue(response.getOutputStream(), map);
         }catch (Exception e){
             log.warn(e.getMessage());
         }
-}
+    }
 
     @Override
     protected void doFilterInternal(HttpServletRequest request, HttpServletResponse response, FilterChain filterChain) throws ServletException, IOException {
@@ -54,10 +54,10 @@ public class CustomAuthorization extends OncePerRequestFilter {
             String token = request.getHeader("Authorization");
             if(token == null){
                 log.warn("Token is null");
-                this.returnFailString(response);
+                this.returnFailString(response,"Token is null" );
             }else if(!token.startsWith("Bearer")){
                 log.warn("token not valid");
-                this.returnFailString(response);
+                this.returnFailString(response, "token not valid");
             }else{
                 Algorithm algo = Algorithm.HMAC256("Stella".getBytes());
                 JWTVerifier verifier = JWT.require(algo).build();
@@ -74,7 +74,7 @@ public class CustomAuthorization extends OncePerRequestFilter {
                     filterChain.doFilter(request,response);
                 }catch (Exception e){
                     log.warn(e.getMessage());
-                    this.returnFailString(response);
+                    this.returnFailString(response, e.getMessage());
                 }
             }
         }
