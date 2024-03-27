@@ -9,6 +9,6 @@ import java.util.List;
 @Repository
 public interface GradeRepo extends JpaRepository<GradeEntity , Long> {
 
-
-    List<GradeEntity> findByLevelName(String levelName);
+//
+//    List<GradeEntity> findByLevelName(String levelName);
 }

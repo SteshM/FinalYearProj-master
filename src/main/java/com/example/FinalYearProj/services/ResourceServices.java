@@ -35,8 +35,8 @@ public class ResourceServices {
     }
 
     public ResponseDTO getLevels() {
-        List<LevelEntity> levelEntityList = levelRepo.findAll();
-        return Utilities.createSuccessfulResponse("successfully fetched all levels", levelEntityList);
+        List<LevelEntity>levelEntityList =levelRepo.findAll();
+        return Utilities.createSuccessfulResponse("successfully fetched all levels",levelEntityList);
     }
 
 

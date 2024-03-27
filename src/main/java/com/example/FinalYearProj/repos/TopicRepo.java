@@ -8,5 +8,5 @@ import java.util.List;
 
 @Repository
 public interface TopicRepo extends JpaRepository<TopicEntity , Long> {
-    List<TopicEntity> findBySubjectNameAndGradeName(String subjectName, String gradeName);
+//    List<TopicEntity> findBySubjectNameAndGradeName(String subjectName, String gradeName);
 }

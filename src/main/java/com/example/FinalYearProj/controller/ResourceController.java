@@ -18,10 +18,10 @@ public class ResourceController {
     public ResponseDTO getLevelById(@PathVariable long levelId){
         return resourceServices.getLevelById(levelId);
     }
-    @GetMapping("/levels")
-    public ResponseDTO getLevels(){
+  @GetMapping("/get-levels")
+  public ResponseDTO getLevels(){
         return resourceServices.getLevels();
-    }
+  }
 
     @GetMapping("/get-Grade/{gradeId}")
     public ResponseDTO getGradeById(@PathVariable long gradeId){
@@ -31,10 +31,10 @@ public class ResourceController {
     public ResponseDTO getGrades(){
         return resourceServices.getGrades();
     }
-    @GetMapping("/get-grade/{levelName}")
-    public ResponseDTO getGradeByLevelName(@PathVariable String levelName){
-        return resourceServices.getGradesByLevelName(levelName);
-    }
+//    @GetMapping("/get-grade/{levelName}")
+//    public ResponseDTO getGradeByLevelName(@PathVariable String levelName){
+//        return resourceServices.getGradesByLevelName(levelName);
+//    }
 
     @PutMapping("/grade/{id}")
     public ResponseDTO updateGrade(@PathVariable long id , @RequestBody GradeDTO gradeDTO){
@@ -103,57 +103,57 @@ public  ResponseDTO updateContent(@PathVariable long id , @RequestBody ContentDT
         return resourceServices.getContentTypes();
 }
 
-@PostMapping("/create-HomeWork")
-    public ResponseDTO createHomeWork(HomeWorkDTO homeWorkDTO){
-        return resourceServices.createHomework(homeWorkDTO);
-}
-@GetMapping("/HomeWorks")
-    public ResponseDTO getHomeWorks(){
-        return resourceServices.getHomeWorks();
-}
-
-@PutMapping("/homeWork/{id}")
-    public ResponseDTO updateHomeWork(@PathVariable long id, @RequestBody HomeWorkDTO homeWorkDTO){
-        return resourceServices.updateHomeWork(id , homeWorkDTO);
-}
-@DeleteMapping ("/homeWork/{id}")
-    public ResponseDTO delete(@PathVariable long id ){
-        return resourceServices.deleteById(id);
-}
-
-    @PostMapping("/create-Question")
-    public ResponseDTO createQuestion(@RequestBody QuestionDTO questionDTO){
-        return resourceServices.createQuestion(questionDTO);
-    }
-    @GetMapping("/questions")
-    public ResponseDTO getQuestions(){
-        return resourceServices.getQuestions();
-    }
-    @GetMapping("/question/{id}")
-    public ResponseDTO getSingleQuestion(@PathVariable long id){
-        return resourceServices.getSingleQuestion(id);
-    }
-    @PutMapping("/question/{id}")
-    public ResponseDTO updateQuestion(@PathVariable long id , @RequestBody QuestionDTO questionDTO){
-        return resourceServices.updateQuestion(id , questionDTO);
-    }
-    @DeleteMapping("/question/{id}")
-    public ResponseDTO deleteQuestion(@PathVariable long id){
-        return resourceServices.deleteQuestion(id);
-    }
-
-    @GetMapping("/get-subject/{levelName}")
-    public ResponseDTO getSubjectByLevelName(@PathVariable String levelName){
-        return resourceServices.getSubjectByLevelName(levelName);
-    }
-    @GetMapping("/get-subject/{gradeName}")
-    public ResponseDTO getSubjectByGradeName(@PathVariable String gradeName){
-        return resourceServices.getSubjectByGradeName(gradeName);
-    }
-    @GetMapping("/get-topic/{subjectName}/{gradeName}")
-    public ResponseDTO getTopicBySubjectNameAndGradeName(@PathVariable String subjectName , @PathVariable String gradeName){
-        return resourceServices.getTopicBySubjectNameAndGradeName(subjectName,gradeName);
-    }
+//@PostMapping("/create-HomeWork")
+//    public ResponseDTO createHomeWork(HomeWorkDTO homeWorkDTO){
+//        return resourceServices.createHomework(homeWorkDTO);
+//}
+//@GetMapping("/HomeWorks")
+//    public ResponseDTO getHomeWorks(){
+//        return resourceServices.getHomeWorks();
+//}
+//
+//@PutMapping("/homeWork/{id}")
+//    public ResponseDTO updateHomeWork(@PathVariable long id, @RequestBody HomeWorkDTO homeWorkDTO){
+//        return resourceServices.updateHomeWork(id , homeWorkDTO);
+//}
+//@DeleteMapping ("/homeWork/{id}")
+//    public ResponseDTO delete(@PathVariable long id ){
+//        return resourceServices.deleteById(id);
+//}
+//
+//    @PostMapping("/create-Question")
+//    public ResponseDTO createQuestion(@RequestBody QuestionDTO questionDTO){
+//        return resourceServices.createQuestion(questionDTO);
+//    }
+//    @GetMapping("/questions")
+//    public ResponseDTO getQuestions(){
+//        return resourceServices.getQuestions();
+//    }
+//    @GetMapping("/question/{id}")
+//    public ResponseDTO getSingleQuestion(@PathVariable long id){
+//        return resourceServices.getSingleQuestion(id);
+//    }
+//    @PutMapping("/question/{id}")
+//    public ResponseDTO updateQuestion(@PathVariable long id , @RequestBody QuestionDTO questionDTO){
+//        return resourceServices.updateQuestion(id , questionDTO);
+//    }
+//    @DeleteMapping("/question/{id}")
+//    public ResponseDTO deleteQuestion(@PathVariable long id){
+//        return resourceServices.deleteQuestion(id);
+//    }
+//
+//    @GetMapping("/get-subject/{levelName}")
+//    public ResponseDTO getSubjectByLevelName(@PathVariable String levelName){
+//        return resourceServices.getSubjectByLevelName(levelName);
+//    }
+//    @GetMapping("/get-subject/{gradeName}")
+//    public ResponseDTO getSubjectByGradeName(@PathVariable String gradeName){
+//        return resourceServices.getSubjectByGradeName(gradeName);
+//    }
+//    @GetMapping("/get-topic/{subjectName}/{gradeName}")
+//    public ResponseDTO getTopicBySubjectNameAndGradeName(@PathVariable String subjectName , @PathVariable String gradeName){
+//        return resourceServices.getTopicBySubjectNameAndGradeName(subjectName,gradeName);
+//    }
 
 }
 

@@ -9,7 +9,7 @@ import java.util.List;
 @Repository
 public interface SubjectRepo extends JpaRepository<SubjectEntity , Long> {
 
-    List<SubjectEntity> findByLevelName(String levelName);
-
-    List<SubjectEntity> findByGradeName(String gradeName);
+//    List<SubjectEntity> findByLevelName(String levelName);
+//
+//    List<SubjectEntity> findByGradeName(String gradeName);
 }
