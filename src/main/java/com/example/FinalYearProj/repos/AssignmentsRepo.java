@@ -5,5 +5,5 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
 @Repository
-public interface HomeWorkRepo extends JpaRepository<AssignmentsEntity, Long> {
+public interface AssignmentsRepo extends JpaRepository<AssignmentsEntity, Long> {
 }

@@ -22,8 +22,8 @@ public class ResourceServices {
     private final TopicRepo topicRepo;
     private final ContentRepo contentRepo;
     private final ContentTypeRepo contentTypeRepo;
-    private final HomeWorkRepo homeWorkRepo;
-    private final QuestionRepo questionRepo;
+    private final AssignmentsRepo assignmentsRepo;
+
 
 
 
@@ -76,7 +76,6 @@ public class ResourceServices {
     public  ResponseDTO createLesson(LessonDTO lessonDTO) {
         LessonEntity lessonEntity = new LessonEntity();
         lessonEntity.setLessonName(lessonDTO.getLessonName());
-        lessonEntity.setLessonDescription(lessonDTO.getLessonDescription());
         lessonEntity.setDuration(lessonDTO.getDuration());
         LessonEntity createdLesson = lessonRepo.save(lessonEntity);
         return Utilities.createSuccessfulResponse("Successfully created a lesson", createdLesson);
@@ -113,7 +112,6 @@ public class ResourceServices {
     public  ResponseDTO createContent(ContentDTO contentDTO) {
         ContentEntity contentEntity = new ContentEntity();
         contentEntity.setContentUrl(contentDTO.getContentUrl());
-        contentEntity.setContentDescription(contentDTO.getContentDescription());
         ContentEntity createdContent = contentRepo.save(contentEntity);
         return Utilities.createSuccessfulResponse("Successfully created content", createdContent);
     }
@@ -146,78 +144,76 @@ public class ResourceServices {
         List<ContentTypeEntity> contentTypeEntityList = contentTypeRepo.findAll();
         return Utilities.createSuccessfulResponse("Successfully retrieved contentTypes", contentTypeEntityList);
     }
-
-    public  ResponseDTO createHomework(HomeWorkDTO homeWorkDTO) {
-        AssignmentsEntity homeWorkEntity = new AssignmentsEntity();
-        homeWorkEntity.setHomeWorkHeading(homeWorkDTO.getHomeWorkHeading());
-        homeWorkEntity.setDate(homeWorkDTO.getDate());
-        AssignmentsEntity createdHomeWork = homeWorkRepo.save(homeWorkEntity);
-        return Utilities.createSuccessfulResponse("Created homeWork successfully",createdHomeWork);
-    }
-
-    public  ResponseDTO getHomeWorks() {
-        List<AssignmentsEntity> homeWorkEntityList = homeWorkRepo.findAll();
-        return Utilities.createSuccessfulResponse("Successfully retrieved all HomeWorks",homeWorkEntityList);
-    }
-
-    public  ResponseDTO updateHomeWork(long id, HomeWorkDTO homeWorkDTO) {
-        AssignmentsEntity homeWorkEntity = homeWorkRepo.findById(id).get();
-        homeWorkEntity.setHomeWorkHeading(homeWorkDTO.getHomeWorkHeading());
-        homeWorkEntity.setHomeWorkHeading(homeWorkDTO.getHomeWorkHeading());
-        AssignmentsEntity updatedHomeWork = homeWorkRepo.save(homeWorkEntity);
-        return Utilities.createSuccessfulResponse("Successfully updated HomeWork",updatedHomeWork);
-    }
-
-    public  ResponseDTO deleteById(long id) {
-        homeWorkRepo.deleteById(id);
-        return Utilities.createSuccessfulResponse("Successfully deleted homeworkById",id);
-    }
-
-    public  ResponseDTO createQuestion(QuestionDTO questionDTO) {
-        QuestionEntity questionEntity = new QuestionEntity();
-        questionEntity.setQuestion(questionDTO.getQuestion());
-        QuestionEntity createdQuestion = questionRepo.save(questionEntity);
-        return Utilities.createSuccessfulResponse("Successfully created a question",createdQuestion);
-    }
-
-    public  ResponseDTO getQuestions() {
-        List<QuestionEntity>questionEntityList = questionRepo.findAll();
-        return Utilities.createSuccessfulResponse("Successfully fetched all the questions",questionEntityList);
-    }
-
-    public  ResponseDTO getSingleQuestion(long id) {
-        QuestionEntity questionEntity = questionRepo.findById(id).get();
-        return Utilities.createSuccessfulResponse("successfully fetched a question",questionEntity);
-    }
-
-    public ResponseDTO updateQuestion(long id, QuestionDTO questionDTO) {
-        QuestionEntity questionEntity = questionRepo.findById(id).get();
-        questionEntity.setQuestion(questionDTO.getQuestion());
-        return Utilities.createSuccessfulResponse("Successfully updated a question",id);
-    }
-
-    public  ResponseDTO deleteQuestion(long id) {
-        questionRepo.deleteById(id);
-        return Utilities.createSuccessfulResponse("Successfully deleted a question",id);
-    }
-
-
-    public ResponseDTO getGradesByLevelName(String levelName) {
-        List<GradeEntity>gradeEntityList = gradeRepo.findByLevelName(levelName);
-        return Utilities.createSuccessfulResponse("Successfully fetched grades by levelName",gradeEntityList);
-    }
-
-    public ResponseDTO getSubjectByLevelName(String levelName) {
-        List<SubjectEntity>subjectEntityList = subjectRepo.findByLevelName(levelName);
-        return Utilities.createSuccessfulResponse("Successfully fetched subjects by levelName",subjectEntityList);
-    }
-    public ResponseDTO getSubjectByGradeName(String gradeName){
-        List<SubjectEntity>subjectEntityList = subjectRepo.findByGradeName(gradeName);
-        return Utilities.createSuccessfulResponse("Successfully fetched subjects by gradeName",subjectEntityList);
-    }
-
-    public ResponseDTO getTopicBySubjectNameAndGradeName(String subjectName, String gradeName) {
-        List<TopicEntity>topicEntityList = topicRepo.findBySubjectNameAndGradeName(subjectName,gradeName);
-        return Utilities.createSuccessfulResponse("Successfully fetched topics by subjectName and GradeName",topicEntityList);
-    }
 }
+
+//    public  ResponseDTO createHomework(HomeWorkDTO homeWorkDTO) {
+//        AssignmentsEntity homeWorkEntity = new AssignmentsEntity();
+//        return Utilities.createSuccessfulResponse("Created homeWork successfully",createdHomeWork);
+//    }
+
+//    public  ResponseDTO getHomeWorks() {
+//        List<AssignmentsEntity> homeWorkEntityList = homeWorkRepo.findAll();
+//        return Utilities.createSuccessfulResponse("Successfully retrieved all HomeWorks",homeWorkEntityList);
+//    }
+//
+//    public  ResponseDTO updateHomeWork(long id, HomeWorkDTO homeWorkDTO) {
+//        AssignmentsEntity homeWorkEntity = homeWorkRepo.findById(id).get();
+//        homeWorkEntity.setHomeWorkHeading(homeWorkDTO.getHomeWorkHeading());
+//        homeWorkEntity.setHomeWorkHeading(homeWorkDTO.getHomeWorkHeading());
+//        AssignmentsEntity updatedHomeWork = homeWorkRepo.save(homeWorkEntity);
+//        return Utilities.createSuccessfulResponse("Successfully updated HomeWork",updatedHomeWork);
+//    }
+
+//    public  ResponseDTO deleteById(long id) {
+//        homeWorkRepo.deleteById(id);
+//        return Utilities.createSuccessfulResponse("Successfully deleted homeworkById",id);
+//    }
+//
+//    public  ResponseDTO createQuestion(QuestionDTO questionDTO) {
+//        QuestionEntity questionEntity = new QuestionEntity();
+//        questionEntity.setQuestion(questionDTO.getQuestion());
+//        QuestionEntity createdQuestion = questionRepo.save(questionEntity);
+//        return Utilities.createSuccessfulResponse("Successfully created a question",createdQuestion);
+//    }
+//
+//    public  ResponseDTO getQuestions() {
+//        List<QuestionEntity>questionEntityList = questionRepo.findAll();
+//        return Utilities.createSuccessfulResponse("Successfully fetched all the questions",questionEntityList);
+//    }
+//
+//    public  ResponseDTO getSingleQuestion(long id) {
+//        QuestionEntity questionEntity = questionRepo.findById(id).get();
+//        return Utilities.createSuccessfulResponse("successfully fetched a question",questionEntity);
+//    }
+//
+//    public ResponseDTO updateQuestion(long id, QuestionDTO questionDTO) {
+//        QuestionEntity questionEntity = questionRepo.findById(id).get();
+//        questionEntity.setQuestion(questionDTO.getQuestion());
+//        return Utilities.createSuccessfulResponse("Successfully updated a question",id);
+//    }
+//
+//    public  ResponseDTO deleteQuestion(long id) {
+//        questionRepo.deleteById(id);
+//        return Utilities.createSuccessfulResponse("Successfully deleted a question",id);
+////    }
+//
+//
+//    public ResponseDTO getGradesByLevelName(String levelName) {
+//        List<GradeEntity>gradeEntityList = gradeRepo.findByLevelName(levelName);
+//        return Utilities.createSuccessfulResponse("Successfully fetched grades by levelName",gradeEntityList);
+//    }
+//
+//    public ResponseDTO getSubjectByLevelName(String levelName) {
+//        List<SubjectEntity>subjectEntityList = subjectRepo.findByLevelName(levelName);
+//        return Utilities.createSuccessfulResponse("Successfully fetched subjects by levelName",subjectEntityList);
+//    }
+//    public ResponseDTO getSubjectByGradeName(String gradeName){
+//        List<SubjectEntity>subjectEntityList = subjectRepo.findByGradeName(gradeName);
+//        return Utilities.createSuccessfulResponse("Successfully fetched subjects by gradeName",subjectEntityList);
+//    }
+//
+//    public ResponseDTO getTopicBySubjectNameAndGradeName(String subjectName, String gradeName) {
+//        List<TopicEntity>topicEntityList = topicRepo.findBySubjectNameAndGradeName(subjectName,gradeName);
+//        return Utilities.createSuccessfulResponse("Successfully fetched topics by subjectName and GradeName",topicEntityList);
+//    }
+//}
