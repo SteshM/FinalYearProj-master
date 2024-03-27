@@ -9,7 +9,7 @@ import lombok.NoArgsConstructor;
 @Entity
 @AllArgsConstructor
 @NoArgsConstructor
-@Table(name = "parent")
+@Table(name = "parents")
 public class ParentEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

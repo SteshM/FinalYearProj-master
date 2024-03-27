@@ -15,5 +15,5 @@ public class ContentEntity {
     @GeneratedValue (strategy = GenerationType.IDENTITY)
     private long contentId;
     private String contentUrl;
-    private String contentDescription;
+    private long contentTypeId;
 }

@@ -9,7 +9,7 @@ import lombok.NoArgsConstructor;
 @Entity
 @AllArgsConstructor
 @NoArgsConstructor
-@Table(name = "tutor")
+@Table(name = "tutors")
 public class TutorEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -17,4 +17,5 @@ public class TutorEntity {
     private String employmentNo;
     private long tutorContact;
     private long tutorIdNo;
+    private long subjectId;
 }

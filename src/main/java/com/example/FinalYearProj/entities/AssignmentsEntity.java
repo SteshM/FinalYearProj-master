@@ -5,16 +5,19 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.time.LocalDate;
+
 @Entity
 @Data
-@NoArgsConstructor
 @AllArgsConstructor
-@Table(name = "question")
-public class QuestionEntity {
-    @Id
+@NoArgsConstructor
+@Table(name = "assignments")
+public class AssignmentsEntity {
+  @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private long questionId;
-    private String question;
-    private String homeWorkHeading;
+    private long assignmentsId;
+    private LocalDate assignmentDate;
+    private LocalDate dueDate;
+    private long topicId;
 
 }

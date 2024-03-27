@@ -7,8 +7,6 @@ import com.example.FinalYearProj.repos.*;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
 
 import java.util.List;
 
@@ -150,23 +148,23 @@ public class ResourceServices {
     }
 
     public  ResponseDTO createHomework(HomeWorkDTO homeWorkDTO) {
-        HomeWorkEntity homeWorkEntity = new HomeWorkEntity();
+        AssignmentsEntity homeWorkEntity = new AssignmentsEntity();
         homeWorkEntity.setHomeWorkHeading(homeWorkDTO.getHomeWorkHeading());
         homeWorkEntity.setDate(homeWorkDTO.getDate());
-        HomeWorkEntity createdHomeWork = homeWorkRepo.save(homeWorkEntity);
+        AssignmentsEntity createdHomeWork = homeWorkRepo.save(homeWorkEntity);
         return Utilities.createSuccessfulResponse("Created homeWork successfully",createdHomeWork);
     }
 
     public  ResponseDTO getHomeWorks() {
-        List<HomeWorkEntity> homeWorkEntityList = homeWorkRepo.findAll();
+        List<AssignmentsEntity> homeWorkEntityList = homeWorkRepo.findAll();
         return Utilities.createSuccessfulResponse("Successfully retrieved all HomeWorks",homeWorkEntityList);
     }
 
     public  ResponseDTO updateHomeWork(long id, HomeWorkDTO homeWorkDTO) {
-        HomeWorkEntity homeWorkEntity = homeWorkRepo.findById(id).get();
+        AssignmentsEntity homeWorkEntity = homeWorkRepo.findById(id).get();
         homeWorkEntity.setHomeWorkHeading(homeWorkDTO.getHomeWorkHeading());
         homeWorkEntity.setHomeWorkHeading(homeWorkDTO.getHomeWorkHeading());
-        HomeWorkEntity updatedHomeWork = homeWorkRepo.save(homeWorkEntity);
+        AssignmentsEntity updatedHomeWork = homeWorkRepo.save(homeWorkEntity);
         return Utilities.createSuccessfulResponse("Successfully updated HomeWork",updatedHomeWork);
     }
 

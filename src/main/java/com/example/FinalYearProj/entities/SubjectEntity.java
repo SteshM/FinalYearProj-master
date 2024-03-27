@@ -9,12 +9,11 @@ import lombok.NoArgsConstructor;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-@Table(name = "subject")
+@Table(name = "subjects")
 public class SubjectEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long subjectId;
     private String subjectName;
-    private String gradeName;
-    private String levelName;
+    private long levelId;
 }
