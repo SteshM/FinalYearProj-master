@@ -13,7 +13,10 @@ import lombok.NoArgsConstructor;
 public class SubjectEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name="subjectId")
     private long subjectId;
+    @Column(name = "subjectName")
     private String subjectName;
+    @Column(name = "levelId")
     private long levelId;
 }

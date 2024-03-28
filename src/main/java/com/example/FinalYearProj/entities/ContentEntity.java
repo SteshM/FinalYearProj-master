@@ -13,7 +13,10 @@ import lombok.NoArgsConstructor;
 public class ContentEntity {
     @Id
     @GeneratedValue (strategy = GenerationType.IDENTITY)
+    @Column(name = "contentId")
     private long contentId;
+    @Column(name = "contentUrl")
     private String contentUrl;
+    @Column(name = "contentTypeId")
     private long contentTypeId;
 }

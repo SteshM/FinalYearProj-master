@@ -13,9 +13,14 @@ import lombok.NoArgsConstructor;
 public class TutorEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name="tutorId")
     private long tutorId;
-    private String employmentNo;
+    @Column(name="empNo")
+    private String empNo;
+    @Column(name="tutorContact")
     private long tutorContact;
+    @Column(name="tutorIdNo")
     private long tutorIdNo;
+    @Column(name="subjectId")
     private long subjectId;
 }

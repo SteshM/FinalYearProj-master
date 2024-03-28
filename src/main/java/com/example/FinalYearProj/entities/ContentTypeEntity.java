@@ -13,6 +13,9 @@ import lombok.NoArgsConstructor;
 public class ContentTypeEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+
+    @Column(name="contentTypeId")
     private long contentTypeId;
+    @Column(name="contentTypeName")
     private String contentTypeName;
 }

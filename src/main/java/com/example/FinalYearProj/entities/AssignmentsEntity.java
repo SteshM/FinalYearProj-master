@@ -15,9 +15,13 @@ import java.time.LocalDate;
 public class AssignmentsEntity {
   @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "assignmentsId")
     private long assignmentsId;
+    @Column(name = "assignmentDate")
     private LocalDate assignmentDate;
+    @Column(name = "dueDate")
     private LocalDate dueDate;
+    @Column(name = "topicssId")
     private long topicId;
 
 }

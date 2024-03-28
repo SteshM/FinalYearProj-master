@@ -14,8 +14,12 @@ import lombok.NoArgsConstructor;
 public class GradeEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "gradeId")
     private long gradeId;
+    @Column(name = "gradeName")
     private String gradeName;
- 
+    @Column (name="levelId")
+    private long levelId;
+
 
 }

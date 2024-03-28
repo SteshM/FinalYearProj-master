@@ -17,7 +17,9 @@ import java.util.List;
 public class LevelEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name="levelId")
     private long levelId;
+    @Column(name = "levelName")
     private String levelName;
 
     

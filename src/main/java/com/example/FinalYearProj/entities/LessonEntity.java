@@ -13,8 +13,12 @@ import lombok.NoArgsConstructor;
 public class LessonEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "lessonId")
     private long lessonId;
+    @Column(name = "lessonName")
     private String lessonName;
+    @Column(name = "duration")
     private long duration;
+    @Column(name = "topicId")
     private long topicId;
 }
