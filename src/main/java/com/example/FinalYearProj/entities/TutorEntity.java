@@ -17,8 +17,8 @@ public class TutorEntity {
     private long tutorId;
     @Column(name="empNo")
     private String empNo;
-    @Column(name="tutorContact")
-    private long tutorContact;
+    @Column(name="tutorContactNo")
+    private long tutorContactNo;
     @Column(name="tutorIdNo")
     private long tutorIdNo;
     @Column(name="subjectId")
