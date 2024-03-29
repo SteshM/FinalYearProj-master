@@ -5,6 +5,7 @@ import lombok.Data;
 @Data
 public class TopicDTO {
     private String topicName;
+    private long subjectId;
 
 
 }

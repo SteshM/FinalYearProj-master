@@ -77,6 +77,7 @@ public class ResourceServices {
         LessonEntity lessonEntity = new LessonEntity();
         lessonEntity.setLessonName(lessonDTO.getLessonName());
         lessonEntity.setDuration(lessonDTO.getDuration());
+        lessonEntity.setTopicId(lessonDTO.getTopicId());
         LessonEntity createdLesson = lessonRepo.save(lessonEntity);
         return Utilities.createSuccessfulResponse("Successfully created a lesson", createdLesson);
     }
@@ -94,6 +95,7 @@ public class ResourceServices {
     public  ResponseDTO createTopic(TopicDTO topicDTO) {
         TopicEntity topicEntity = new TopicEntity();
         topicEntity.setTopicName(topicDTO.getTopicName());
+        topicEntity.setSubjectId(topicDTO.getSubjectId());
         TopicEntity createdTopic = topicRepo.save(topicEntity);
         return Utilities.createSuccessfulResponse("Successfully created a topic", createdTopic);
     }

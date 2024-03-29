@@ -50,7 +50,7 @@ public class ResourceController {
     public ResponseDTO getSubjectById(@PathVariable long subjectId){
         return resourceServices.getSubjectById(subjectId);
 }
-@PostMapping("/create-Lesson")
+@PostMapping("/create-lesson")
     public ResponseDTO createLesson(@RequestBody LessonDTO lessonDTO){
         return resourceServices.createLesson(lessonDTO);
 }
@@ -103,44 +103,6 @@ public  ResponseDTO updateContent(@PathVariable long id , @RequestBody ContentDT
         return resourceServices.getContentTypes();
 }
 
-//@PostMapping("/create-HomeWork")
-//    public ResponseDTO createHomeWork(HomeWorkDTO homeWorkDTO){
-//        return resourceServices.createHomework(homeWorkDTO);
-//}
-//@GetMapping("/HomeWorks")
-//    public ResponseDTO getHomeWorks(){
-//        return resourceServices.getHomeWorks();
-//}
-//
-//@PutMapping("/homeWork/{id}")
-//    public ResponseDTO updateHomeWork(@PathVariable long id, @RequestBody HomeWorkDTO homeWorkDTO){
-//        return resourceServices.updateHomeWork(id , homeWorkDTO);
-//}
-//@DeleteMapping ("/homeWork/{id}")
-//    public ResponseDTO delete(@PathVariable long id ){
-//        return resourceServices.deleteById(id);
-//}
-//
-//    @PostMapping("/create-Question")
-//    public ResponseDTO createQuestion(@RequestBody QuestionDTO questionDTO){
-//        return resourceServices.createQuestion(questionDTO);
-//    }
-//    @GetMapping("/questions")
-//    public ResponseDTO getQuestions(){
-//        return resourceServices.getQuestions();
-//    }
-//    @GetMapping("/question/{id}")
-//    public ResponseDTO getSingleQuestion(@PathVariable long id){
-//        return resourceServices.getSingleQuestion(id);
-//    }
-//    @PutMapping("/question/{id}")
-//    public ResponseDTO updateQuestion(@PathVariable long id , @RequestBody QuestionDTO questionDTO){
-//        return resourceServices.updateQuestion(id , questionDTO);
-//    }
-//    @DeleteMapping("/question/{id}")
-//    public ResponseDTO deleteQuestion(@PathVariable long id){
-//        return resourceServices.deleteQuestion(id);
-//    }
 //
 //    @GetMapping("/get-subject/{levelName}")
 //    public ResponseDTO getSubjectByLevelName(@PathVariable String levelName){
