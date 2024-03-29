@@ -7,6 +7,7 @@ import com.example.FinalYearProj.repos.*;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
+import org.springframework.web.multipart.MultipartFile;
 
 import java.util.List;
 
@@ -132,6 +133,7 @@ public class ResourceServices {
         ContentTypeEntity contentTypeEntity = new ContentTypeEntity();
         contentTypeEntity.setContentTypeId(contentTypeDTO.getContentTypeId());
         contentTypeEntity.setContentTypeName(contentTypeDTO.getContentTypeName());
+        contentTypeEntity.setContentTypeId(contentTypeDTO.getContentTypeId());
         ContentTypeEntity createdContentType = contentTypeRepo.save(contentTypeEntity);
         return Utilities.createSuccessfulResponse("Successfully created contentType", createdContentType);
     }
@@ -146,76 +148,12 @@ public class ResourceServices {
         List<ContentTypeEntity> contentTypeEntityList = contentTypeRepo.findAll();
         return Utilities.createSuccessfulResponse("Successfully retrieved contentTypes", contentTypeEntityList);
     }
+
+    public ResponseDTO uploadAssignment(MultipartFile file) {
+        AssignmentsEntity assignmentsEntity =new AssignmentsEntity();
+        String fileName = file.getOriginalFilename();
+        assignmentsRepo.save(assignmentsEntity);
+        return Utilities.createSuccessfulResponse("Successfully uploaded a file",fileName);
+    }
 }
 
-//    public  ResponseDTO createHomework(HomeWorkDTO homeWorkDTO) {
-//        AssignmentsEntity homeWorkEntity = new AssignmentsEntity();
-//        return Utilities.createSuccessfulResponse("Created homeWork successfully",createdHomeWork);
-//    }
-
-//    public  ResponseDTO getHomeWorks() {
-//        List<AssignmentsEntity> homeWorkEntityList = homeWorkRepo.findAll();
-//        return Utilities.createSuccessfulResponse("Successfully retrieved all HomeWorks",homeWorkEntityList);
-//    }
-//
-//    public  ResponseDTO updateHomeWork(long id, HomeWorkDTO homeWorkDTO) {
-//        AssignmentsEntity homeWorkEntity = homeWorkRepo.findById(id).get();
-//        homeWorkEntity.setHomeWorkHeading(homeWorkDTO.getHomeWorkHeading());
-//        homeWorkEntity.setHomeWorkHeading(homeWorkDTO.getHomeWorkHeading());
-//        AssignmentsEntity updatedHomeWork = homeWorkRepo.save(homeWorkEntity);
-//        return Utilities.createSuccessfulResponse("Successfully updated HomeWork",updatedHomeWork);
-//    }
-
-//    public  ResponseDTO deleteById(long id) {
-//        homeWorkRepo.deleteById(id);
-//        return Utilities.createSuccessfulResponse("Successfully deleted homeworkById",id);
-//    }
-//
-//    public  ResponseDTO createQuestion(QuestionDTO questionDTO) {
-//        QuestionEntity questionEntity = new QuestionEntity();
-//        questionEntity.setQuestion(questionDTO.getQuestion());
-//        QuestionEntity createdQuestion = questionRepo.save(questionEntity);
-//        return Utilities.createSuccessfulResponse("Successfully created a question",createdQuestion);
-//    }
-//
-//    public  ResponseDTO getQuestions() {
-//        List<QuestionEntity>questionEntityList = questionRepo.findAll();
-//        return Utilities.createSuccessfulResponse("Successfully fetched all the questions",questionEntityList);
-//    }
-//
-//    public  ResponseDTO getSingleQuestion(long id) {
-//        QuestionEntity questionEntity = questionRepo.findById(id).get();
-//        return Utilities.createSuccessfulResponse("successfully fetched a question",questionEntity);
-//    }
-//
-//    public ResponseDTO updateQuestion(long id, QuestionDTO questionDTO) {
-//        QuestionEntity questionEntity = questionRepo.findById(id).get();
-//        questionEntity.setQuestion(questionDTO.getQuestion());
-//        return Utilities.createSuccessfulResponse("Successfully updated a question",id);
-//    }
-//
-//    public  ResponseDTO deleteQuestion(long id) {
-//        questionRepo.deleteById(id);
-//        return Utilities.createSuccessfulResponse("Successfully deleted a question",id);
-////    }
-//
-//
-//    public ResponseDTO getGradesByLevelName(String levelName) {
-//        List<GradeEntity>gradeEntityList = gradeRepo.findByLevelName(levelName);
-//        return Utilities.createSuccessfulResponse("Successfully fetched grades by levelName",gradeEntityList);
-//    }
-//
-//    public ResponseDTO getSubjectByLevelName(String levelName) {
-//        List<SubjectEntity>subjectEntityList = subjectRepo.findByLevelName(levelName);
-//        return Utilities.createSuccessfulResponse("Successfully fetched subjects by levelName",subjectEntityList);
-//    }
-//    public ResponseDTO getSubjectByGradeName(String gradeName){
-//        List<SubjectEntity>subjectEntityList = subjectRepo.findByGradeName(gradeName);
-//        return Utilities.createSuccessfulResponse("Successfully fetched subjects by gradeName",subjectEntityList);
-//    }
-//
-//    public ResponseDTO getTopicBySubjectNameAndGradeName(String subjectName, String gradeName) {
-//        List<TopicEntity>topicEntityList = topicRepo.findBySubjectNameAndGradeName(subjectName,gradeName);
-//        return Utilities.createSuccessfulResponse("Successfully fetched topics by subjectName and GradeName",topicEntityList);
-//    }
-//}

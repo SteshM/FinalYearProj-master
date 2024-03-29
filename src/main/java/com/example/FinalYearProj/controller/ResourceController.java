@@ -6,6 +6,7 @@ import jakarta.annotation.Resource;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
 
 @Slf4j
 @RestController
@@ -92,30 +93,15 @@ public ResponseDTO getTopicById(@PathVariable long topicId){
 public  ResponseDTO updateContent(@PathVariable long id , @RequestBody ContentDTO contentDTO){
         return resourceServices.updateContent(id , contentDTO);
 }
-
-
-@PostMapping("/create-Content-Type")
-    public ResponseDTO createContentType(@RequestBody ContentTypeDTO contentTypeDTO){
-        return resourceServices.createContentType(contentTypeDTO);
-}
 @GetMapping("/content-Types")
     public ResponseDTO getContentTypes(){
         return resourceServices.getContentTypes();
 }
 
-//
-//    @GetMapping("/get-subject/{levelName}")
-//    public ResponseDTO getSubjectByLevelName(@PathVariable String levelName){
-//        return resourceServices.getSubjectByLevelName(levelName);
-//    }
-//    @GetMapping("/get-subject/{gradeName}")
-//    public ResponseDTO getSubjectByGradeName(@PathVariable String gradeName){
-//        return resourceServices.getSubjectByGradeName(gradeName);
-//    }
-//    @GetMapping("/get-topic/{subjectName}/{gradeName}")
-//    public ResponseDTO getTopicBySubjectNameAndGradeName(@PathVariable String subjectName , @PathVariable String gradeName){
-//        return resourceServices.getTopicBySubjectNameAndGradeName(subjectName,gradeName);
-//    }
+@PostMapping("/assignment")
+    public ResponseDTO uploadAssignment(@RequestParam("file")MultipartFile file){
+   return resourceServices.uploadAssignment(file);
+}
 
 }
 

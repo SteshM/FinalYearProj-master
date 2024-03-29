@@ -21,7 +21,9 @@ public class AssignmentsEntity {
     private LocalDate assignmentDate;
     @Column(name = "dueDate")
     private LocalDate dueDate;
-    @Column(name = "topicssId")
+    @Column(name="googleFormLink")
+    private String googleFormLink;
+    @Column(name = "topicsId")
     private long topicId;
 
 }

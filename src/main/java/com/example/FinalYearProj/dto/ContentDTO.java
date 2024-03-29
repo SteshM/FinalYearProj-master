@@ -5,5 +5,6 @@ import lombok.Data;
 @Data
 public class ContentDTO {
     private String contentUrl;
-    private String contentDescription;
+    private long contentTypeId;
+ 
 }
